@@ -10,7 +10,7 @@ import { isPresent } from '@ember/utils';
 import { deprecate } from '@ember/application/deprecations';
 import EmberError from '@ember/error';
 import { get } from '@ember/object';
-import ShimModelClass from './model/shim-model-class';
+import { getShimClass } from './model/shim-model-class';
 import { setOwner, getOwner } from '@ember/application';
 import { DSModel } from '../ts-interfaces/ds-model';
 import NotificationManager from './record-notification-manager';
@@ -158,7 +158,7 @@ class Store extends CoreStore {
     // for factorFor factory/class split
     let klass = maybeFactory.class ? maybeFactory.class : maybeFactory;
     if (!klass.isModel) {
-      return new ShimModelClass(this, modelName);
+      return getShimClass(this, modelName);
     } else {
       return klass;
     }

@@ -756,7 +756,7 @@ export default class InternalModel {
 
     loadingPromise = this.store
       ._findHasManyByJsonApiResource(jsonApi, this, relationshipMeta, options)
-      .then(initialState => {
+      .then(() => {
         // TODO why don't we do this in the store method
         manyArray.retrieveLatest();
         manyArray.set('isLoaded', true);
