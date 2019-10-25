@@ -73,6 +73,25 @@
   @class MinimumAdapterInterface
   @public
 */
-interface Adapter {}
+interface Adapter {
+  findRecord();
+  findAll();
+  query();
+  queryRecord();
+
+  createRecord();
+  updateRecord();
+  deleteRecord();
+
+  generateIdForRecord?();
+  findMany?();
+  groupRecordForFindMany?();
+  shouldReloadRecord?();
+  shouldReloadAll?();
+  shouldBackgroundReloadRecord?();
+  shouldBackgroundReloadAll?();
+
+  coalesceFindRequests?: boolean;
+}
 
 export default Adapter;
